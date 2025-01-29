@@ -13,7 +13,7 @@ matrix = np.array(image_gray)
 # Imprime las dimensiones de la imagen
 print("Dimensiones:", matrix.shape)
 
-# Muestra la imagen usando matplotlib
+# Muestra la imagen usando matplotlib 
 plt.imshow(image_gray, cmap='gray')
 plt.title("El mas bravo del mundo")
 plt.axis("off")
