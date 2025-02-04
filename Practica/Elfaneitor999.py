@@ -36,7 +36,7 @@ def comprobar_regalo(palindromo:bool, par:bool)->str:
     palindromo : bool
     par_o_impar : bool
     ----------
-    Comprueba si el numero es par o impar para categorizar el regalo
+    Comprueba si el numero es par o impar, palindromo o no para categorizar el regalo y ser entregado
     Returns string
     """
     if palindromo == True and par == True:
