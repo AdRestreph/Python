@@ -39,14 +39,19 @@ def comprobar_regalo(palindromo:bool, par:bool)->str:
     Comprueba si el numero es par o impar, palindromo o no para categorizar el regalo y ser entregado
     Returns string
     """
-    if palindromo == True and par == True:
-        return "El regalo es para un niño"
-    elif palindromo == True and par == False:
-        return "El regalo es para una niña"
-    elif palindromo == False and par == True:
-        return "El regalo es para un hombre"
+    clasificacion = ""
+    if palindromo:
+        if par:
+            clasificacion = "El regalo es para un niño"
+        else:
+            clasificacion = "El regalo es para una niña"
     else:
-        return "El regalo es para una mujer"
+        if par:
+            clasificacion = "El regalo es para un hombre"
+        else:
+            clasificacion = "El regalo es para una mujer"
+
+    return clasificacion
 
 etiqueta = int(input("Ingrese un numero para clasificar la etiqueta: "))
 print(f'El numero ingresado es: {etiqueta} y {comprobar_regalo(comprobar_palindromo(etiqueta), comprobar_par_o_impar(etiqueta))}')
