@@ -19,9 +19,8 @@ def modify_images( path: str) -> list:
     This function modifies the images in a directory.
     ----------
     path : [str] - directory path
-    save_path : [str] - path to save grayscale images
     ----------
-    return: []
+    return: [list] - list images/matrix in grayscale
     """
     list_dir = os.listdir(path)
     grayscale_images = []
