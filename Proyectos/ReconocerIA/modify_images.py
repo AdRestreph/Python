@@ -2,13 +2,15 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-def directorys(save_path: str, iterable:int, matrix:set) -> list:
+def directorys(save_path: str, iterable:int, matrix:set) -> str:
     """
     This function save the images in the directory/folders.
     ----------
-    path : [str] - directory path
+    save_path : [str] - directory path in which the images will be saved
+    iterable : [int] - iterable to name the images
+    matrix : [set] - image matrix in grayscale
     ----------
-    return: [list]
+    return: [str] - message
     """
 
     if not os.path.exists(save_path):
@@ -21,13 +23,12 @@ def directorys(save_path: str, iterable:int, matrix:set) -> list:
 
 def modify_images( path: str,save_path: str) -> None:
     """
-    This function modifies the images in a directory and saves them in grayscale.
+    This function modifies the images in a directory and use the directorys function.
     ----------
-    list_dir :  [list] - contains images in color
     path : [str] - directory path
     save_path : [str] - path to save grayscale images
     ----------
-    return: [str] confirmation message
+    return: None
     """
     list_dir = os.listdir(path)
 
