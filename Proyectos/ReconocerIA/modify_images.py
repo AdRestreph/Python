@@ -2,38 +2,30 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-def directorys(save_path: str, list_grayscale_images:list) -> None:
+def matrix_gray(path:str) -> np.ndarray:
     """
-    This function save the images in the directory/folders.
+    This function converts an image to grayscale.
     ----------
-    save_path : [str] - directory path in which the images will be saved
-    list_grayscale_images : [list] - list images/matrix in grayscale
+    path : [str] - directory image/matrix
     ----------
-    return: [None]
+    return: [np.ndarray] - image/matrix in grayscale
     """
-    for i in range(len(list_grayscale_images)):
-        plt.imsave(save_path + f'gray_{str(i+1)}.png', list_grayscale_images[i], cmap='gray')
+    image = plt.imread(path)
+    image_gray = np.dot(image[..., :3], [0.2989, 0.5870, 0.1140])
+    matrix_gray = np.array(image_gray)
 
-def modify_images( path: str) -> list:
-    """
-    This function modifies the images in a directory.
-    ----------
-    path : [str] - directory path
-    ----------
-    return: [list] - list images/matrix in grayscale
-    """
-    list_dir = os.listdir(path)
-    grayscale_images = []
+    return matrix_gray
 
-    for i in list_dir:
-        image = plt.imread(os.path.join(path, i))
-        image_gray = np.dot(image[..., :3], [0.2989, 0.5870, 0.1140])
-        matrix_gray = np.array(image_gray)
-        grayscale_images.append(matrix_gray)
+def main():
+    path = 'C:/Users/Usuario/Pictures/images/images_'
+    color_path = f'{path}color/'
+    gray_path = f'{path}gray/'
+    list_dir = os.listdir(color_path)
+    for img in list_dir:
+        matrix = matrix_gray(color_path + img)
+        plt.imsave(gray_path + 'gray_' + img, matrix, cmap= plt.get_cmap('gray'))
 
-    return grayscale_images
 
-path = 'C:/Users/Usuario/Pictures/images/images_color/'
-save_path = 'C:/Users/Usuario/Pictures/images/images_gray/'
+if __name__ == "__main__":
+    main()
 
-directorys(save_path,modify_images(path))
