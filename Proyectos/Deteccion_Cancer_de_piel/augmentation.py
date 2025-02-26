@@ -7,7 +7,7 @@ transform = A.Compose([
     A.HorizontalFlip(p=0.5),
     A.Rotate(limit=30, p=0.5),
     A.RandomBrightnessContrast(p=0.2),
-    A.RandomCrop(width=IMG_SIZE, height=IMG_SIZE, always_apply=True),
+    A.RandomCrop(width=IMG_SIZE, height=IMG_SIZE),
 ])
 
 def augment_image(image):

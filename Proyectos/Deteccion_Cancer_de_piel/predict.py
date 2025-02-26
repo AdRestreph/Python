@@ -1,15 +1,26 @@
 import numpy as np
 import cv2
-import tensorflow as tf
-from dataset import preprocess_image
-import os
+
 
 def predict_image(model, img_path, class_names):
     """Realiza la predicción de una imagen."""
-    img = np.expand_dims(preprocess_image(img_path), axis=0)
-    pred = model.predict(img)
-    pred_class = int(np.argmax(pred))
-    return class_names[pred_class]
+    try:
+        # Load and preprocess the image
+        img = cv2.imread(img_path)
+        if img is None:
+            raise ValueError(f"Error loading image: {img_path}")
+
+        img = cv2.resize(img, (224, 224))  # Adjust size as needed
+        img = img / 255.0  # Normalize the image
+        img = np.expand_dims(img, axis=0)  # Add batch dimension
+
+        # Predict the class
+        pred = model.predict(img)
+        pred_class = int(np.argmax(pred))
+        return class_names[pred_class]
+    except Exception as e:
+        print(f"Error processing image {img_path}: {e}")
+        return None
 
 def evaluate_model(model, X_val, y_val, class_names):
     """Evalúa el modelo con imágenes de prueba y visualiza los resultados."""
