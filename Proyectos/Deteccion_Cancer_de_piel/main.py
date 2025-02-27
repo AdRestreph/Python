@@ -1,7 +1,7 @@
 from dataset import load_data
 from model import train_model
-from predict import predict_image, evaluate_model
-import os
+from predict import evaluate_model
+
 
 def main ():
     # Cargar datos
@@ -12,11 +12,6 @@ def main ():
 
     # Evaluar modelo
     evaluate_model(model, X_val, y_val, class_names)
-
-    # Predecir una imagen específica
-    img_path = os.path.join('ruta/a/imagen.jpg')
-    predicted_disease = predict_image(model, img_path, class_names)
-    print(f'Predicted disease: {predicted_disease}')
 
 if __name__ == '__main__':
     main()
