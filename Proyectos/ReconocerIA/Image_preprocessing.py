@@ -1,6 +1,4 @@
-import os
 import numpy as np
-import matplotlib.pyplot as plt
 import cv2
 
 def resize_img(path:str, size:tuple) -> np.ndarray:
@@ -31,20 +29,4 @@ def matrix_gray(image: np.ndarray) -> np.ndarray:
 
     return matrix_gray
 
-def main():
-    path = 'C:/Users/Usuario/Pictures/images/images_'
-    color_path = f'{path}color/'
-    norm_path = f'{path}normalized/'
-    list_dir = os.listdir(color_path)
-
-    for img in list_dir:
-        image = (color_path + img)
-        image_resized = resize_img(image, size=(256, 256))
-        image_gray = matrix_gray(image_resized)
-
-        plt.imsave(norm_path + 'n_' + img, image_gray, cmap='gray')
-        print(f'Image {img} resized, converted to grayscale, and normalized')
-
-if __name__ == "__main__":
-    main()
 
