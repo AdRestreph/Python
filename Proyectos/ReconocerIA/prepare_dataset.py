@@ -2,8 +2,8 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from dotenv import load_dotenv
-from Proyectos.ReconocerIA.Image_preprocessing import resize_img, matrix_gray
-from Proyectos.ReconocerIA.data_augmentation import gaussian_noise, moved_img, degrees_img
+from Proyectos.ReconocerIA.dataset_generation.Image_preprocessing import resize_img, matrix_gray
+from Proyectos.ReconocerIA.dataset_generation.data_augmentation import gaussian_noise, moved_img, degrees_img
 
 load_dotenv()
 
