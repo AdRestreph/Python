@@ -32,3 +32,6 @@ transform = transforms.Compose([
 ])
 traindataset = EmotionsDataset('train_labels.csv', transform=transform)
 trainloader = DataLoader(traindataset,batch_size=32,shuffle=True)
+
+testdataset = EmotionsDataset('test_labels.csv', transform=transform)
+testloader = DataLoader(testdataset,batch_size=32,shuffle=True)
